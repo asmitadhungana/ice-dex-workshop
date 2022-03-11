@@ -5,11 +5,10 @@ Please go through the given tasks and complete them in a sequential order in ord
 
 ## Task 1: Add the contracts
 Add the two contracts to the [contracts](contracts) directory 
-- Token.sol
-- Exchange.sol
+- [Token.sol](https://github.com/asmitadhungana/ice-dex-workshop/blob/complete-project/contracts/Token.sol)
+- [Exchange.sol](https://github.com/asmitadhungana/ice-dex-workshop/blob/complete-project/contracts/Exchange.sol)
 ---
 **NOTE**
-
 Make sure to delete the .gitignore file inside the contracts directory. 
 It was only used as a placeholder so that the contracts directory could be commited to git 
 
