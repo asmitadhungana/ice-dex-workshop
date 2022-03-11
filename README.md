@@ -1,10 +1,13 @@
 # ICE-DEX Workshop
 :wave: Welcome to the public repository of ICE-DEX workshop!</br>
-This branch contains the *boilerplate code* for the project: ICE-DEX.
+This branch contains the *boilerplate code* for the project: ICE-DEX.</br>
 In this workshop, you'll learn how to create and deploy your custom ERC20 Token and a dedicated Exchange for it in the ICE-testnet.</br>
 Please go through the given tasks and complete them in a sequential order in order to do so...
 
-## Task 1: Add the contracts
+## Task 1: Install the dependencies
+`npm install`
+
+## Task 2: Add the contracts
 Add the two contracts to the [contracts](contracts) directory 
 - [Token.sol](https://github.com/asmitadhungana/ice-dex-workshop/blob/complete-project/contracts/Token.sol)
 - [Exchange.sol](https://github.com/asmitadhungana/ice-dex-workshop/blob/complete-project/contracts/Exchange.sol)
@@ -15,8 +18,7 @@ It was only used as a placeholder so that the contracts directory could be commi
 
 ---
 
-
-## Task 2: Add your accounts for deploying
+## Task 3: Add your accounts for deploying
 Create a new file called ***.env*** in the root directory and perform *one* of the following tasks as per your preference:
 * Use the provided accounts pre-funded with ICZ (testnet currency of ICE: Frost Network) to deploy and interact with the contracts in Frost:
     * Copy the contents of [.env.example](.env.example) file
@@ -28,7 +30,7 @@ Create a new file called ***.env*** in the root directory and perform *one* of t
     * Replace the `DEPLOYER_PRIVATE_KEY` with the private key of the account you want to use
     * Replace the `DEPLOYER_ADDRESS` with the address of the related account
 
-## Task 3: Run the scripts 
+## Task 4: Run the scripts 
 There are 6 scripts provided inside the [scripts](scripts) directory, run them consecutively in your terminal using the command:
 
 ```shell
