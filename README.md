@@ -1,5 +1,5 @@
 # ICE-DEX Workshop
-Welcome to the public repository of ICE-DEX workshop!</br>
+:wave: Welcome to the public repository of ICE-DEX workshop!</br>
 In this workshop, you'll learn how to create and deploy your custom ERC20 Token and a dedicated Exchange for it in the ICE-testnet.</br>
 Please go through the given tasks and complete them in a sequential order in order to do so...
 
@@ -29,17 +29,18 @@ Create a new file called ***.env*** in the root directory and perform *one* of t
     * Replace the `DEPLOYER_ADDRESS` with the address of the related account
 
 ## Task 3: Run the scripts 
-There are 5 scripts provided inside the [scripts](scripts) directory, run them consecutively in your terminal using the command:
+There are 6 scripts provided inside the [scripts](scripts) directory, run them consecutively in your terminal using the command:
 
 ```shell
-npx hardhat run scripts/<file_name>
+npx hardhat run scripts/<file_name> --network frost
 ```
 
 - [1_deploy_token.js](scripts/1_deploy_token.js)
 - [2_query_token.js](scripts/2_query_token.js)
 - [3_deploy_exchange.js](scripts/3_deploy_exchange.js)
 - [4_exchange_addLiquidity.js](scripts/4_exchange_addLiquidity.js)
-- [5_exchange_make_swaps.js](scripts/5_exchange_make_swaps.js)
+- [5_exchange_swapIczForToken.js](scripts/5_exchange_swapIczForToken.js)
+- [6_exchange_swapTokenForIcz.js](scripts/6_exchange_swapTokenForIcz.js)
 
 <details>
     <summary> Additional Hardhat Commands</summary>
@@ -51,4 +52,11 @@ npx hardhat run scripts/<file_name>
     <p>`npx hardhat help`</p>
 </details>
 
-### Thanks for participating!
+---
+**NOTE**
+
+Please refer to the [branch: complete_project](https://github.com/asmitadhungana/ice-dex-workshop/tree/complete-project) for the complete project.
+
+---
+
+### Thanks for participating! :partying_face:
