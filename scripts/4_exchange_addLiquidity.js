@@ -45,12 +45,12 @@ async function main() {
   const iczAmount = toWei(2);
 
   // FETCH THE TOKEN
-  const my_token = await hre.ethers.getContractAt("Token", fetchTokenAddress());
-  console.log("Deployer token balance is:", await my_token.balanceOf(DEPLOYER_ADDRESS));
+  const token = await hre.ethers.getContractAt("Token", fetchTokenAddress());
+  console.log("Deployer token balance is:", await token.balanceOf(DEPLOYER_ADDRESS));
 
   // APPROVE THE EXCHANGE CONTRACT
-  await my_token.approve(exchange_address, tokenAmount);
-  console.log("Allowance for Exchange contract is:", await my_token.allowance(DEPLOYER_ADDRESS, exchange_address));
+  await token.approve(exchange_address, tokenAmount);
+  console.log("Allowance for Exchange contract is:", await token.allowance(DEPLOYER_ADDRESS, exchange_address));
 
   // CALL THE addLiquidity() FUNCTION FROM THE EXCHANGE CONTRACT
   await exchange.addLiquidity(tokenAmount, { value: iczAmount });

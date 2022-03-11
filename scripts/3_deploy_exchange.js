@@ -1,6 +1,7 @@
+const hre = require("hardhat");
+
 const fs = require("fs");
 const path = require("path");
-const hre = require("hardhat");
 
 async function fetchTokenAddress() {
   try {
@@ -34,11 +35,11 @@ async function addExchangeAddressToFile(exchangeAddress) {
 
 async function main() {
   // FETCH THE TOKEN ADDRESS
-  const my_token_address = fetchTokenAddress();
+  const token_address = fetchTokenAddress();
 
   // DEPLOY THE EXCHANGE CONTRACT
   const Exchange = await hre.ethers.getContractFactory("Exchange");
-  const exchange = await Exchange.deploy(my_token_address);
+  const exchange = await Exchange.deploy(token_address);
 
   await exchange.deployed();
 

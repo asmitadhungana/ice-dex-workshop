@@ -24,15 +24,15 @@ async function addTokenAddressToFile(tokenAddress) {
 async function main() {
   // DEPLOY THE TOKEN CONTRACT
   const Token = await hre.ethers.getContractFactory("Token");
-  const my_token = await Token.deploy("MyToken", "MTKN", 1000000);
+  const token = await Token.deploy("MyToken", "MTKN", 1000000);
 
-  await my_token.deployed();
+  await token.deployed();
   
   // LOG THE DEPLOYED TOKEN ADDRESS
-  console.log("Token deployed to:", my_token.address);
+  console.log("Token deployed to:", token.address);
 
   // ADD THE DEPLOYED TOKEN ADDRESS TO A JSON FILE
-  await addTokenAddressToFile(my_token.address);
+  await addTokenAddressToFile(token.address);
 }
 
 main()
