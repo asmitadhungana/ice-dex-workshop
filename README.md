@@ -8,7 +8,8 @@ Add the two contracts to the /contracts directory
 - Token.sol
 - Exchange.sol
 
-## Task 2: Create a new file called ***.env*** in the root directory of the repository and do one of the following as per your preference:
+## Task 2: Add your accounts for deploying
+Create a new file called ***.env*** in the root directory and perform *one* of the following tasks as per your preference:
 * Use the provided accounts pre-funded with ICZ (testnet currency of ICE: Frost Network) to deploy and interact with the contracts in Frost:
     * Copy the contents of [.env.example](.env.example) file
     * Paste it in your newly created .env file and save it
@@ -20,7 +21,7 @@ Add the two contracts to the /contracts directory
     * Replace the `DEPLOYER_ADDRESS` with the address of the related account
 
 ## Task 3: Run the scripts 
-There are 5 scripts provided inside the /scripts directory, run them consecutively in your terminal using the command
+There are 5 scripts provided inside the [scripts](scripts) directory, run them consecutively in your terminal using the command:
 
 ```shell
 npx hardhat run scripts/<file_name>
@@ -34,16 +35,12 @@ npx hardhat run scripts/<file_name>
 
 <details>
     <summary> Additional Hardhat Commands</summary>
-    <p> ```shell
-            npx hardhat accounts
-            npx hardhat compile
-            npx hardhat clean
-            npx hardhat test
-            npx hardhat node
-            node scripts/sample-script.js
-            npx hardhat help
-        ```
-    </p>
+    <p>`npx hardhat accounts`</p>
+    <p>`npx hardhat compile`</p>
+    <p>`npx hardhat clean`</p>
+    <p>`npx hardhat test`</p>
+    <p>`npx hardhat node`</p>
+    <p>`npx hardhat help`</p>
 </details>
 
 ### Thanks for participating!
