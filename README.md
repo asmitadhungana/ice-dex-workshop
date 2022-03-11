@@ -4,9 +4,17 @@ In this workshop, you'll learn how to create and deploy your custom ERC20 Token 
 Please go through the given tasks and complete them in a sequential order in order to do so...
 
 ## Task 1: Add the contracts
-Add the two contracts to the /contracts directory 
+Add the two contracts to the [contracts](contracts) directory 
 - Token.sol
 - Exchange.sol
+---
+**NOTE**
+
+Make sure to delete the .gitignore file inside the contracts directory. 
+It was only used as a placeholder so that the contracts directory could be commited to git 
+
+---
+
 
 ## Task 2: Add your accounts for deploying
 Create a new file called ***.env*** in the root directory and perform *one* of the following tasks as per your preference:
