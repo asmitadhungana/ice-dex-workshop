@@ -1,22 +1,10 @@
 # ICE-DEX Workshop
 :wave: Welcome to the public repository of ICE-DEX workshop!</br>
-In this workshop, you'll learn how to create and deploy your custom ERC20 Token and a dedicated Exchange for it in the ICE-testnet.</br>
+This branch contains the complete code for the project: ICE-DEX.
+In the project, you'll create your custom ERC20 token and deploy a dedicated exchange for it in ICE-testet.
 Please go through the given tasks and complete them in a sequential order in order to do so...
 
-## Task 1: Add the contracts
-Add the two contracts to the [contracts](contracts) directory 
-- Token.sol
-- Exchange.sol
----
-**NOTE**
-
-Make sure to delete the .gitignore file inside the contracts directory. 
-It was only used as a placeholder so that the contracts directory could be commited to git 
-
----
-
-
-## Task 2: Add your accounts for deploying
+## Task 1: Add your (own) accounts for deploying contracts
 Create a new file called ***.env*** in the root directory and perform *one* of the following tasks as per your preference:
 * Use the provided accounts pre-funded with ICZ (testnet currency of ICE: Frost Network) to deploy and interact with the contracts in Frost:
     * Copy the contents of [.env.example](.env.example) file
