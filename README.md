@@ -1,5 +1,6 @@
 # ICE-DEX Workshop
 :wave: Welcome to the public repository of ICE-DEX workshop!</br>
+This branch contains the *boilerplate code* for the project: ICE-DEX.
 In this workshop, you'll learn how to create and deploy your custom ERC20 Token and a dedicated Exchange for it in the ICE-testnet.</br>
 Please go through the given tasks and complete them in a sequential order in order to do so...
 
