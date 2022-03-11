@@ -6,7 +6,6 @@ dotenv.config({path: '.env'});
 const hre = require("hardhat");
 
 const DEPLOYER_ADDRESS = process.env.DEPLOYER_ADDRESS;
-const USER_ADDRESS = process.env.USER_ADDRESS;
 
 const toWei = (value) => ethers.utils.parseEther(value.toString());
 const fromWei = (value) =>
@@ -43,10 +42,14 @@ async function main() {
 
   // SWAP AMOUNT
   const iczAmount = 1;
-  const tokenAmount = 10;
 
   // QUERY USER-TOKEN BALANCE BEFORE SWAP
   const token = await hre.ethers.getContractAt("Token", fetchTokenAddress());
+
+  console.log("===================================================================");
+  console.log("                           ICZ-to-Token-Swap                       ");
+  console.log("===================================================================");
+
   console.log("Deployer token balance BEFORE-SWAP is:", fromWei(await token.balanceOf(DEPLOYER_ADDRESS)), await token.symbol());
 
   // QUERY THE TOKEN AND ICZ RESERVE BALANCE OF THE EXCHANGE BEFORE SWAP
@@ -56,41 +59,12 @@ async function main() {
 
   // GET OBTAINABLE TOKEN AMOUNT
   const obtainableTokenAmount = await exchange.getTokenAmount(toWei(iczAmount));
-  console.log(`Obtainable Token Amount for swapping ${iczAmount} ICZ is:`, fromWei(obtainableTokenAmount), "Tokens");
+  console.log(`Obtainable Token Amount for swapping ${iczAmount} ICZ is: ${fromWei(obtainableTokenAmount)} ${await token.symbol()}`);
 
-  // SWAP ICZ FOR TOKEN
+  // =====SWAP ICZ FOR TOKEN ===== //
   // const minTokensToObtain = toWei(obtainableTokenAmount - (0.1 * obtainableTokenAmount));
   const _minTokensToObtain = toWei(0.01);
   await exchange.swapIczForToken(_minTokensToObtain, { value: toWei(iczAmount) });
-  console.log(`Congratulations! Your ICZ has been swapped for ${await token.symbol()} successfully!`);
-
-  // console.log(" ");
-  // console.log("===================================================================");
-  // console.log(" ");
-
-  // // QUERY USER-TOKEN BALANCE AFTER SWAP
-  // console.log("Deployer token balance AFTER-SWAP is:", fromWei(await token.balanceOf(DEPLOYER_ADDRESS)));
-
-  // // QUERY THE TOKEN AND ICZ RESERVE BALANCE OF THE EXCHANGE AFTER SWAP
-  // console.log("Token reserve in Exchange liquidity pool AFTER-SWAP is:", fromWei(await exchange.getTokenReserve()));
-  // console.log("ICZ reserve in Exchange liquidity pool AFTER-SWAP is:", fromWei(await ethers.provider.getBalance(fetchExchangeAddress())));
-
-  // DO Similar for TokenToIczSwap
-  console.log("Deployer ICZ balance BEFORE-SWAP is:", fromWei(await ethers.provider.getBalance(DEPLOYER_ADDRESS)), "ICZ");
-
-  // QUERY THE TOKEN AND ICZ RESERVE BALANCE OF THE EXCHANGE BEFORE SWAP
-  console.log(`Token reserve in Exchange liquidity pool BEFORE-SWAP is:  ${fromWei(await exchange.getTokenReserve())}  ${await token.symbol()}`);
-  console.log(`ICZ reserve in Exchange liquidity pool BEFORE-SWAP is: ${fromWei(await exchange.getIczReserve())} ICZ`);
-
-
-  // GET OBTAINABLE TOKEN AMOUNT
-  const obtainableIczAmount = await exchange.getTokenAmount(toWei(tokenAmount));
-  console.log(`Obtainable Icz Amount for swapping ${tokenAmount} ICZ is: ${fromWei(obtainableIczAmount)} ICZ`);
-
-  // SWAP TOKEN FOR ICZ
-  // const minIcztoObtain = obtainableTokenAmount - (0.1 * obtainableTokenAmount);
-  const _minIcztoObtain = toWei(0.01);
-  await exchange.swapTokenForIcz(toWei(tokenAmount), _minIcztoObtain); // toWei(obtainableTokenAmount - (0.3 * obtainableTokenAmount))
   console.log(`Congratulations! Your ICZ has been swapped for ${await token.symbol()} successfully!`);
 }
 
