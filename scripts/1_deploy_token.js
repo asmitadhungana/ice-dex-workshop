@@ -22,9 +22,14 @@ async function addTokenAddressToFile(tokenAddress) {
 }
 
 async function main() {
+  const constructorParams = {
+    name: "MyToken",
+    symbol: "MTKN",
+    initialSupply: 1000000
+  }
   // DEPLOY THE TOKEN CONTRACT
   const Token = await hre.ethers.getContractFactory("Token");
-  const token = await Token.deploy("MyToken", "MTKN", 1000000);
+  const token = await Token.deploy(constructorParams.name, constructorParams.symbol, constructorParams.initialSupply);
 
   await token.deployed();
   

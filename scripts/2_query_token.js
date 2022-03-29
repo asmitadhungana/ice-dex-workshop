@@ -5,37 +5,36 @@ dotenv.config({path: '.env'});
 
 const hre = require("hardhat");
 
+const deployedContracts = require("../deployedContracts.json");
 const DEPLOYER_ADDRESS = process.env.DEPLOYER_ADDRESS;
 const USER_ADDRESS = process.env.USER_ADDRESS;
 
-async function fetchTokenAddress() {
-    try {
-      var data = fs.readFileSync(path.resolve(__dirname, "../deployedContracts.json"));
-    } catch (err) {
-      console.log(err);
-    }
-  
-    var deployedContracts = JSON.parse(data);
-    return deployedContracts.TokenAddress;
-}
+const toWei = (value) => ethers.utils.parseEther(value.toString());
+const fromWei = (value) =>
+  ethers.utils.formatEther(
+    typeof value === "string" ? value : value.toString()
+  );
 
 async function main() {
+
+  const tokenAddress = deployedContracts.TokenAddress;
   // ATTACH THE CONTRACT ABI TO THE CONTRACT ADDRESS
-  const token = await hre.ethers.getContractAt("Token", fetchTokenAddress());
+  const token = await hre.ethers.getContractAt("Token", tokenAddress);
 
   // QEURY THE NAME, SYMBOL AND TOTAL-SUPPPLY OF THE TOKEN
   console.log("Name of the Token is:", await token.name());
   console.log("Symbol of the Token is:",await token.symbol());
-  console.log("Total Supply of the Token is:", await token.totalSupply());
+  console.log("Total Supply of the Token is:", fromWei(await token.totalSupply()));
 
   // QUERY THE DEPLOYER-TOKEN-BALANCE
-  console.log("Deployer token balance is:", await token.balanceOf(DEPLOYER_ADDRESS));
+  console.log("Deployer token balance is:", fromWei(await token.balanceOf(DEPLOYER_ADDRESS)));
 
   // TRANSFER SOME TOKENS FROM DEPLOYER TO THE USER
-  await token.transfer(USER_ADDRESS, 1000);
+  const transferAmount = 1;
+  await token.transfer(USER_ADDRESS, toWei(transferAmount));
 
   // QUERY THE USER-TOKEN-BALANCE
-  console.log("User token balance is:", await token.balanceOf(USER_ADDRESS));
+  console.log("User token balance is:", fromWei(await token.balanceOf(USER_ADDRESS)));
 }
 
 main()
